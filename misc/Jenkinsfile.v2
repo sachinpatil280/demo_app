@@ -8,7 +8,7 @@ node {
    stage('test') {
      def myTestContainer = docker.image('node:4.7')
      myTestContainer.pull()
-     myTestContainer.inside("--entrypoint=''") {
+     myTestContainer.inside {
        sh 'HOME=$PWD npm install --only=dev'
        sh 'npm test'
      }
